@@ -1,0 +1,15 @@
+{
+  "name": "latlong_viewer",
+  "version": "0.1.0",
+  "description": "A simple graphical viewer for pairs of lat-longs overlaid on a map",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "Simon Kruik",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^13.1.5"
+  }
+}
