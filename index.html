@@ -4,10 +4,16 @@
         <meta charset="UTF-8">
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
         <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+        <link rel="stylesheet" href="node_modules/leaflet/dist/leaflet.css">
+        <link rel="stylesheet" href="style/style.css">
+        <script src="node_modules/leaflet/dist/leaflet.js"></script>
+        <script type="text/javascript" src="secrets/tokens.json"></script>
         <title>Lat-long Viewer</title>
     </head>
     <body>
         <h1>Lat-long viewer:</h1>
+        <div id="map"></div>
+        <script src="src/renderer.js"></script>
         This viewer uses Node.js <span id="node-version"></span>, Chromium <span id="chrome-version"></span>, and Electron <span id="electron-version"></span>
     </body>
 </html>
