@@ -9,13 +9,19 @@ contextBridge.exposeInMainWorld(
         send: (channel, data) => {
             let validChannels = ["toMain"];
             if (validChannels.includes(channel)) {
+                console.log("Sending to main:", data)
                 ipcRenderer.send(channel, data);
             }
         },
         receive: (channel, func) => {
+            
             let validChannels = ["fromMain"];
             if (validChannels.includes(channel)) {
-                ipcRenderer.on (channel, (event,...args) => func(...args));
+                console.log("Received in renderer on channel: ",channel)
+                ipcRenderer.on(channel, (event,args) => {
+                    console.log("Received in renderer these args:",args);
+                    func(event,args)
+                });
             }
         }
     }

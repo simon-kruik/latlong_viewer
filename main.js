@@ -27,7 +27,7 @@ async function createWindow() {
     })
 
 
-
+    win.webContents.openDevTools()
     win.loadFile('index.html')
 /* The code below shows a variety of contents that can be returned from a started renderer
     const github_window = new BrowserWindow({
@@ -45,6 +45,12 @@ app.whenReady().then(() => {
     app.on('activate', function () {
         if (BrowserWindow.getAllWindows().length === 0) createWindow()
     })
+    /*
+    fs.readFile("secrets/tokens.json", (error, data) => {
+    console.error(error);
+    console.log(JSON.parse(data));
+    });
+    */
 })
 
 app.on('window-all-closed', function () {
@@ -52,8 +58,8 @@ app.on('window-all-closed', function () {
 })
 
 ipcMain.on("toMain", (event, args) => {
-    console.log(event)
+    console.log("Request received in main:", args)
     fs.readFile("secrets/tokens.json", (error,data) => {
-        win.webContents.send("fromMain", data)
+        event.reply("fromMain", [JSON.parse(data)])
     });
 });
